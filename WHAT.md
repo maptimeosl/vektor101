@@ -8,11 +8,11 @@ Traditionally, maps are created from image tiles. But vector tiles contain vecto
 ## What can you do?
 Having the Open Street Map data available as vector tiles, for example, makes it possible for you to design your own map exactly how you want it. 
 
-[Mapbox Studio](https://www.mapbox.com/mapbox-studio/) is the best service for designing basemaps, based on OSM and vector tiles.
+[Mapbox Studio](https://www.mapbox.com/mapbox-studio/) is the best place to start for designing basemaps. It's based on Open Street Map and vector tiles.
 
 
 ## Great resources for vector tiles
 - [Mapbox overview of vector tiles](https://www.mapbox.com/vector-tiles/)
 - [List of great tools and tech built with vector tiles](https://github.com/mapbox/awesome-vector-tiles)
 - [Mapzen vector tile service of OSM](https://mapzen.com/projects/vector-tiles/)
-- 
+- [Mapbox Studio, for designing vector tile maps](https://www.mapbox.com/mapbox-studio/)

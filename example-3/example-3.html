@@ -33,23 +33,26 @@
 <body>
 
 <div id='map'></div>
-<div class='info'>
-  <a href='https://www.mapbox.com/mapbox-gl/' target='_blank'>Mapbox GL</a> |
-  © <a href='https://www.openstreetmap.org/copyright' target='_blank'>OpenStreetMap contributors</a> |
-  <a href='https://mapzen.com/projects/vector-tiles' title='Tiles courtesy of Mapzen' target='_blank'>Mapzen</a>
-</div>
+
 
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiYmNhbXBlciIsImEiOiJWUmh3anY0In0.1fgSTNWpQV8-5sBjGbBzGg';
 var simple = {
   "version": 7,
   "glyphs": "mapbox://fontstack/{fontstack}/{range}.pbf",
+
+  // these are constants defined for use in the stylesheet below.
+  // these are only "shorthands", to make styling easier to write.
   "constants": {
     "@name": "{name_en}",
+    
+    // fonts
     "@sans": "Open Sans Regular, Arial Unicode MS Regular",
     "@sans-it": "Open Sans Italic, Arial Unicode MS Regular",
     "@sans-md": "Open Sans Semibold, Arial Unicode MS Bold",
     "@sans-bd": "Open Sans Bold, Arial Unicode MS Bold",
+    
+    // colors
     "@big-label": "#cb4b49",
     "@medium-label": "#f27a87",
     "@small-label": "#384646",
@@ -58,7 +61,7 @@ var simple = {
     "@boundary": "#aaaaaa",
     "@boundary-light": "#bbbbbb",
     "@land": "#ededed",
-    "@water": "red",
+    "@water": "white",
     "@park": "#c2cd44",
     "@building": "black",
     "@highway": "#5d6765",
@@ -66,6 +69,8 @@ var simple = {
     "@road": "#c0c4c2",
     "@path": "#5d6765",
     "@subway": "#ef7369",
+
+    // widths
     "@highway-width": {
       "base": 1.55,
       "stops": [[4, 0.5], [8, 1.5], [20, 40]]
@@ -91,6 +96,9 @@ var simple = {
       "stops": [[4, 0.5], [10, 1.5], [20, 5]]
     }
   },
+
+
+  // data source
   "sources": {
     "mapzen": {
       "type": "vector",
@@ -98,6 +106,8 @@ var simple = {
       "maxzoom": 16
     }
   },
+
+  // define style for all layers
   "layers": [{
     "id": "background",
     "type": "background",
@@ -467,16 +477,16 @@ var simple = {
   ]
 };
 
+// create map object
 var map = new mapboxgl.Map({
   container: 'map',
   style: simple,
   zoom: 12,
   minZoom: 2,
   center: [ 59.9, 10.7],
-
 });
 
-
+// add navigation control
 map.addControl(new mapboxgl.Navigation());
 
 

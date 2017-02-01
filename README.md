@@ -11,6 +11,4 @@ cd vektor101
 If you don't have `git` installed, [download it here](https://git-scm.com/downloads).
 
 ## Examples
-Open examples.html in your browser to look at examples.
-
-Example 1: Display vector tiles with MapboxGL-js
+Look in the examples folders for maps you can open locally in your browser.

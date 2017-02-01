@@ -29,15 +29,21 @@ var map = new mapboxgl.Map({
 // data from OpenStreetMap.
 map.on('load', function() {
     map.addLayer({
-        // 'id': '3d-buildings',
-        'id': 'mapic.ciyk99tth00182wpdaud90nqf-8x9jc',
+
+        // data from Mapbox
+        // see example here: https://www.mapbox.com/mapbox-gl-js/example/3d-buildings/
+        'id': '3d-buildings',
         'source': 'composite',
         'source-layer': 'building',
         'filter': ['==', 'extrude', 'true'],
         'type': 'fill-extrusion',
         'minzoom': 10,
         'paint': {
+
+            // color of building (try putting 'red' instead!)
             'fill-extrusion-color': 'gainsboro',
+            
+            // height of building, taken from property in vector data
             'fill-extrusion-height': {
                 'type': 'identity',
                 'property': 'height'
@@ -46,6 +52,8 @@ map.on('load', function() {
                 'type': 'identity',
                 'property': 'min_height'
             },
+
+            // opacity of building
             'fill-extrusion-opacity': .6
         }
     });

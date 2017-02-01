@@ -9,60 +9,145 @@
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
+
+        #debug {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          width: auto;
+          height: auto;
+          min-height: 20%;
+          background: #f7f7f7;
+          border-radius: 10px;
+          opacity: 0.8;
+          font-family: courier;
+          padding: 10px;
+          color: #4d4d4d;
+          font-size: 14px;
+          min-width: 30%;
+        }
     </style>
 </head>
 <body>
 
 <div id='map'></div>
+<pre id="debug"></pre>
 <script>
+
+
+
+// set access token
+// find yours at https://www.mapbox.com/studio/account/tokens/
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwaWMiLCJhIjoiY2l2MmE1ZW4wMDAwZTJvcnhtZGI4YXdlcyJ9.rD_-Ou1OdKQsHqEqL6FJLg';
+
+// create map object
 var map = new mapboxgl.Map({
+
+    // the <div> container created above
     container: 'map',
-    style: 'mapbox://styles/mapic/ciyn0fs0n00a32ro954dwazcj',
+
+    // a basic map style from mapbox
+    // see https://www.mapbox.com/studio/styles/ for other styles
+    style: 'mapbox://styles/mapic/ciyn2kiw900ah2ro9cl1fo4gl',
+
+    // set default zoom
     zoom: 13,
+
+    // set default center
     center: [5.742110506371233, 58.961570565226396]
 });
 
+
+// this function will run when map is done loading
 map.on('load', function () {
 
+    // add your layer
     map.addLayer({
-        "id": "kolonihager.geojson",
-        "type": "line",
+
+        // create a unique id for this layer
+        "id": "koloni-polygons-id",
+
+        // define source
+        // this is a `tileset` type of source, which you can create from datasets in Mapbox Studio
+        // see more here: https://www.mapbox.com/studio/tilesets/ and here https://www.mapbox.com/studio/datasets/
         "source": {
             type: 'vector',
-            url: 'mapbox://mapic.ciyn16z2u002x32pa7hmvzxdt-0o5d1'
+            url: 'mapbox://mapic.ciyn2g6ru003t2wr4n4uirl1c-6edo8'
         },
-        "source-layer": "kolonihager.geojson",
-        "layout": {
-            "line-join": "round",
-            "line-cap": "round"
-        },
-        "paint": {
-            "line-color": "#ff69b4",
-            "line-width": 1,
-            "line-blur" : 1,
-        },
+
+        // put the name of your source layer, ie. the tileset layer
+        "source-layer": "koloni-polygons-tileset",
+      
+
+        // design
+        // ======
+        // Here you can decide different styling options.
+        // See Mapbox Style spec for more information: https://www.mapbox.com/mapbox-gl-js/style-spec/
+        // NB: Only one of the three styles can be active at the same time. Try to uncomment different styles.
+
+
+
+        // option 1: line (coloring outlines) 
+        // -
+        // "type": "line",
+        // "paint": {
+        //     "line-color": "#ff69b4",
+        //     "line-width": 1,
+        //     "line-blur" : 1,
+        // },
+
+
+        // option 2: fill (coloring polygons)
+        // -
+        // "type": "fill",
+        // "paint": {
+        //     "fill-color": "#ff69b4",
+        //     "fill-opacity": 0.5,
+        // },
+
+
+        // option 3: fill-extrusion (creating 3D buildings from data)
+        // -
+        'type': 'fill-extrusion',
+        'paint': {
+          'fill-extrusion-color': '#aaa',
+          'fill-extrusion-height': {
+            'type': 'identity',
+            'property': 'Areal' // name of property in vector tile dataset
+          },
+          'fill-extrusion-opacity': .6
+        }
+
+
 
     });
 
-    // map.on("mousemove", function(e) {
-    //     var features = map.queryRenderedFeatures(e.point, { layers: ["kolonihager.geojson"] });
-    //     if (!features) return;
-    //     if (features.length) {
-    //       console.log(features);
+    // show properties in debug <pre> on hover
+    map.on("mousemove", function(e) {
 
-    //         // map.setFilter("state-fills-hover", ["==", "name", features[0].properties.name]);
-    //     } else {
-    //         // map.setFilter("state-fills-hover", ["==", "name", ""]);
-    //     }
-    // });
+        // get features
+        var features = map.queryRenderedFeatures(e.point, { layers: ["koloni-polygons-id"] });
+        
+        // return if no features
+        if (!features || !features.length) return;
 
-    // // Reset the state-fills-hover layer's filter when the mouse leaves the map
-    // map.on("mouseout", function() {
-    //     // map.setFilter("state-fills-hover", ["==", "name", ""]);
-    // });
+        // show properties as text in debug <div>
+        // console.log(features)
+        var text = 'Features:\n';
+        features.forEach(function (f) {
+          text += JSON.stringify(f.properties, null, 4);
+          text += '\n\nLayer:\n';
+          text += JSON.stringify(f.layer, null, 4);
+        });
+        debugdom.innerHTML = text;
+    });
+
+  
 });
-</script>
 
+// get debug div
+var debugdom = document.getElementById('debug');
+
+</script>
 </body>
 </html>

@@ -8,7 +8,7 @@ Clone this repository to your `localhost`:
 git clone https://github.com/mapic/vektor101.git
 cd vektor101
 ```
-
+If you don't have `git` installed, [download it here](https://git-scm.com/downloads).
 
 ## Examples
 Open examples.html in your browser to look at examples.

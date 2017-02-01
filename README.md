@@ -6,10 +6,9 @@
 ## Install
 Clone this repository to your `localhost`:
 ```
-https://github.com/mapic/vector-tiles-examples.git
-cd vector-tiles-examples
+git clone https://github.com/mapic/vektor101.git
+cd vektor101
 ```
-
 
 
 ## Examples

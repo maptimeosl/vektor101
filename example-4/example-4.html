@@ -77,7 +77,7 @@ map.on('load', function () {
 
         // put the name of your source layer, ie. the tileset layer
         "source-layer": "koloni-polygons-tileset",
-      
+
 
         // design
         // ======
@@ -87,36 +87,36 @@ map.on('load', function () {
 
 
 
-        // option 1: line (coloring outlines) 
+        // option 1: line (coloring outlines)
         // -
-        // "type": "line",
-        // "paint": {
-        //     "line-color": "#ff69b4",
-        //     "line-width": 1,
-        //     "line-blur" : 1,
-        // },
+         "type": "line",
+         "paint": {
+             "line-color": "#ff69b4",
+             "line-width": 1,
+             "line-blur" : 1,
+         },
 
 
         // option 2: fill (coloring polygons)
         // -
-        // "type": "fill",
-        // "paint": {
-        //     "fill-color": "#ff69b4",
+        //  "type": "fill",
+    //     "paint": {
+      //       "fill-color": "#ff69b4",
         //     "fill-opacity": 0.5,
-        // },
+    //     },
 
 
         // option 3: fill-extrusion (creating 3D buildings from data)
         // -
-        'type': 'fill-extrusion',
-        'paint': {
-          'fill-extrusion-color': '#aaa',
-          'fill-extrusion-height': {
-            'type': 'identity',
-            'property': 'Areal' // name of property in vector tile dataset
-          },
-          'fill-extrusion-opacity': .6
-        }
+  //      'type': 'fill-extrusion',
+  //      'paint': {
+  //        'fill-extrusion-color': 'red',
+  //        'fill-extrusion-height': {
+  //          'type': 'identity',
+  //          'property': 'Areal' // name of property in vector tile dataset
+  //        },
+    //      'fill-extrusion-opacity': .6
+    //    }
 
 
 
@@ -127,7 +127,7 @@ map.on('load', function () {
 
         // get features
         var features = map.queryRenderedFeatures(e.point, { layers: ["koloni-polygons-id"] });
-        
+
         // return if no features
         if (!features || !features.length) return;
 
@@ -142,7 +142,7 @@ map.on('load', function () {
         debugdom.innerHTML = text;
     });
 
-  
+
 });
 
 // get debug div

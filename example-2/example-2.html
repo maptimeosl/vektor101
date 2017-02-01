@@ -18,8 +18,8 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoibWFwaWMiLCJhIjoiY2l2MmE1ZW4wMDAwZTJvcnhtZGI4YXdlcyJ9.rD_-Ou1OdKQsHqEqL6FJLg';
 var map = new mapboxgl.Map({
     style: 'mapbox://styles/mapbox/light-v9',
-    center: [-74.0066, 40.7135],
-    zoom: 15,
+    center: [10.8066, 59.9135],
+    zoom: 12,
     pitch: 45,
     bearing: 40.6,
     container: 'map'
@@ -41,7 +41,7 @@ map.on('load', function() {
         'paint': {
 
             // color of building (try putting 'red' instead!)
-            'fill-extrusion-color': 'gainsboro',
+            'fill-extrusion-color': 'red',
             
             // height of building, taken from property in vector data
             'fill-extrusion-height': {
@@ -54,7 +54,7 @@ map.on('load', function() {
             },
 
             // opacity of building
-            'fill-extrusion-opacity': .6
+            'fill-extrusion-opacity': .9
         }
     });
 });

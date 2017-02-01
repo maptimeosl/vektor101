@@ -1,7 +1,14 @@
-# vektor101
+# Vector tile examples
 
-Vi vil ha en workshop rundt hvordan lage webkart basert på Vektor-tiles. Vi har sendt mail til Knut Ole Sjøli, og spør om han kan noe om det.
+Check out [WHAT.md](https://github.com/maptimeosl/vektor101/blob/master/WHAT.md) for background on vector tiles.
 
+## Install
+Clone this repository to your `localhost`:
+```
+git clone https://github.com/maptimeosl/vektor101.git
+cd vektor101
+```
+If you don't have `git` installed, [download it here](https://git-scm.com/downloads).
 
-**Planlagt gjennomføring:** Januar.
-
+## Examples
+Look in the examples folders for maps you can open locally in your browser.

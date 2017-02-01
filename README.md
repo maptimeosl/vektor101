@@ -1,6 +1,5 @@
 # Vector tile examples
 
-## What are vector tiles?
 Check out [WHAT.md](https://github.com/mapic/vektor101/blob/master/WHAT.md) for background on vector tiles.
 
 ## Install

@@ -1,7 +1,14 @@
-# vektor101
+# vector-tiles-examples
 
-Vi vil ha en workshop rundt hvordan lage webkart basert på Vektor-tiles. Vi har sendt mail til Knut Ole Sjøli, og spør om han kan noe om det.
+## Install
+Clone this repository to your `localhost`:
+```
+https://github.com/mapic/vector-tiles-examples.git
+cd vector-tiles-examples
+```
+
+## Examples
+Open examples.html in your browser to look at examples.
 
 
-**Planlagt gjennomføring:** Januar.
-
+Example 1: Display vector tiles with MapboxGL-js
